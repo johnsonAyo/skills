@@ -1,0 +1,4 @@
+interface:
+  display_name: "Replace, Don’t Layer"
+  short_description: "Change behavior at its existing source"
+  default_prompt: "Use $replace-dont-layer to implement this change at the owning behavior and remove superseded code."

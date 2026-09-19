@@ -12,7 +12,7 @@ npx skills@latest add johnsonAyo/skills
 
 | Skill | Purpose |
 | --- | --- |
-| `replace-dont-layer` | Change the existing behaviour owner and remove superseded code. |
+| `replace-dont-layer` | Change the existing behaviour owner; remove superseded code and failed fix attempts. |
 
 ## replace-dont-layer
 

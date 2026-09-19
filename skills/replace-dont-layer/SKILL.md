@@ -1,6 +1,6 @@
 ---
 name: replace-dont-layer
-description: Change code at the existing behavior owner instead of accumulating parallel implementations, overrides, compatibility branches, or duplicate tests. Use for implementation, bug fixes, refactors, styling changes, reviews, and multi-agent coding whenever code already influences the requested behavior.
+description: Change code at the existing behavior owner instead of accumulating parallel implementations, overrides, compatibility branches, or duplicate tests. When the real fix lands, strip failed attempts and debug leftovers so nothing fake-load-bearing remains. Use for implementation, bug fixes, refactors, styling changes, reviews, and multi-agent coding whenever code already influences the requested behavior.
 ---
 
 # Replace, Don't Layer
@@ -41,7 +41,11 @@ Run the narrowest relevant checks while working, then the appropriate full verif
 
 Audit the diff and search for residue from the superseded behavior: old branches, duplicate pages or services, selectors, tokens, flags, adapters, configuration, comments, fixtures, compatibility mappings, and tests. Remove each obsolete item or document why it remains and its removal condition.
 
-Completion requires both correct behavior and an account of every superseded path. Passing tests alone is insufficient.
+When the **real** fix finally lands after a debugging hunt, strip every failed attempt too—not only the old production owner. That includes speculative CSS, null-guards, feature flags, wrappers, scroll hacks, probe logs, temporary state, and unused imports added while hunting. Do not leave dead code that looks load-bearing but no longer holds the correct state; readers and later agents will treat leftovers as intentional.
+
+Keep only what the working fix needs, plus any adjacent change that remains true on its own (for example a real typography bug that still exists after a scroll fix). If two mechanisms appear to fix the same symptom, keep one and delete the other.
+
+Completion requires both correct behavior and an account of every superseded path **and** every discarded attempt. Passing tests alone is insufficient.
 
 ## Handoff
 
